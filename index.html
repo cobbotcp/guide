@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dokumentacja</title>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --surface: #1a2332;
+      --border: #2d3a4d;
+      --text: #e7ecf1;
+      --muted: #8b9cb3;
+      --accent: #3d9ee6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+      min-height: 100vh;
+    }
+
+    .wrap {
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.75rem;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.5rem;
+    }
+
+    .lede {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0 0 1rem;
+      color: var(--accent);
+    }
+
+    ul.docs {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    ul.docs li {
+      margin: 0 0 0.65rem;
+    }
+
+    ul.docs a {
+      display: block;
+      padding: 0.85rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    ul.docs a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    ul.docs .desc {
+      display: block;
+      margin-top: 0.35rem;
+      font-size: 0.92rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    code {
+      font-family: "Cascadia Code", "Consolas", monospace;
+      font-size: 0.92em;
+      background: var(--surface);
+      padding: 0.15em 0.45em;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Dokumentacja</h1>
+      <p class="lede">Przewodniki i materiały pomocnicze.</p>
+    </header>
+
+    <h2>Przewodniki</h2>
+    <ul class="docs">
+      <li>
+        <a href="docs/@putty-windows-install.html">
+          Instalacja PuTTY w systemie Windows
+          <span class="desc">Pobranie oficjalnego instalatora MSI, instalacja i pierwsze połączenie SSH.</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>

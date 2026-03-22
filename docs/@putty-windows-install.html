@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instalacja PuTTY w Windows — przewodnik</title>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --surface: #1a2332;
+      --border: #2d3a4d;
+      --text: #e7ecf1;
+      --muted: #8b9cb3;
+      --accent: #3d9ee6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      font-size: 1.125rem;
+      line-height: 1.75;
+      color: var(--text);
+      background: var(--bg);
+      min-height: 100vh;
+    }
+
+    .wrap {
+      max-width: 48rem;
+      margin: 0 auto;
+      padding: 3rem clamp(1.25rem, 4vw, 2rem) 5rem;
+    }
+
+    .back {
+      margin-bottom: 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .back a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .back a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    h1 {
+      font-size: clamp(1.85rem, 4vw, 2.35rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.75rem;
+      color: var(--text);
+      line-height: 1.25;
+    }
+
+    .lede {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.125rem;
+      line-height: 1.75;
+      max-width: 38em;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin: 2.75rem 0 1rem;
+      line-height: 1.3;
+      color: var(--accent);
+    }
+
+    p {
+      margin: 0 0 1.35rem;
+      max-width: 40em;
+    }
+
+    ol.steps {
+      margin: 0 0 1.75rem;
+      padding-left: 1.5rem;
+    }
+
+    ol.steps li {
+      margin-bottom: 1.05rem;
+      padding-left: 0.5rem;
+      line-height: 1.75;
+    }
+
+    ol.steps li:last-child {
+      margin-bottom: 0;
+    }
+
+    ol.steps li strong {
+      color: var(--text);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    a:hover {
+      color: #6bb8f0;
+    }
+
+    .note {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.35rem;
+      margin: 1.75rem 0;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      max-width: 40em;
+    }
+
+    .note p:last-child {
+      margin-bottom: 0;
+    }
+
+    code {
+      font-family: "Cascadia Code", "Consolas", monospace;
+      font-size: 0.92em;
+      background: var(--surface);
+      padding: 0.15em 0.45em;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    footer {
+      margin-top: 3.5rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    footer p {
+      max-width: none;
+    }
+
+    .doc-figure {
+      margin: 1.75rem 0 2rem;
+    }
+
+    .doc-figure img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+
+    .doc-figure figcaption {
+      margin-top: 0.85rem;
+      font-size: 0.98rem;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 40em;
+    }
+
+    .after-figure {
+      margin-top: 2rem;
+      padding-top: 0.25rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .after-figure p {
+      margin-bottom: 1.15rem;
+    }
+
+    .after-figure p:last-child {
+      margin-bottom: 0;
+    }
+
+    .callout {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 1.1rem 1.25rem;
+      margin: 1.25rem 0 1.35rem;
+      line-height: 1.75;
+      max-width: 40em;
+    }
+
+    .callout p {
+      margin: 0;
+      max-width: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="back"><a href="../index.html">← Wszystkie dokumenty</a></p>
+    <header>
+      <h1>Instalacja PuTTY w systemie Windows</h1>
+      <p class="lede">Krótki przewodnik po pobraniu i zainstalowaniu oficjalnego klienta SSH PuTTY w Windows 10 i Windows 11.</p>
+    </header>
+
+    <h2>Czego potrzebujesz</h2>
+    <p>PuTTY to darmowy klient SSH i Telnet dla Windows. Do pobrania instalatora użyjesz przeglądarki; przy instalacji dla wszystkich użytkowników mogą być potrzebne uprawnienia administratora.</p>
+
+    <h2>Pobieranie PuTTY</h2>
+    <p>Linki prowadzące na zewnętrzne strony otwierają się w <strong>nowej karcie</strong> przeglądarki — ta strona z dokumentacją zostaje otwarta w dotychczasowej karcie.</p>
+    <ol class="steps">
+      <li>Otwórz przeglądarkę i wejdź na oficjalną stronę pobierania: <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html" target="_blank" rel="noopener noreferrer">najnowsza wersja PuTTY</a> (link prowadzi także z <a href="https://www.putty.org/" target="_blank" rel="noopener noreferrer">putty.org</a>).</li>
+      <li>W sekcji <strong>Package files</strong> znajdź fragment dotyczący systemu Windows.</li>
+      <li>Pobierz instalator <strong>64-bit x86</strong>, zwykle o nazwie w stylu <code>putty-64bit-&lt;wersja&gt;-installer.msi</code>. Jeśli masz wyłącznie 32-bitowy Windows (dziś rzadkie), użyj instalatora 32-bitowego.</li>
+    </ol>
+
+    <figure class="doc-figure">
+      <img src="../img/64bit.png" width="1410" height="440" alt="Strona pobierania PuTTY: sekcja Windows z plikiem instalatora 64-bit MSI." loading="lazy" decoding="async">
+      <figcaption>Na stronie pobierania wybierz instalator <strong>64-bit x86</strong> (plik MSI) dla typowego komputera z Windows.</figcaption>
+    </figure>
+
+    <h2>Instalacja z pliku MSI</h2>
+    <ol class="steps">
+      <li>Otwórz folder <strong>Pobrane</strong> i dwukrotnie kliknij pobrany plik <code>.msi</code>.</li>
+      <li>Jeśli pojawi się Windows SmartScreen, wybierz <strong>Więcej informacji</strong>, a następnie <strong>Uruchom mimo to</strong> — tylko wtedy, gdy masz pewność, że plik pochodzi z oficjalnego linku.</li>
+      <li>Postępuj zgodnie z kreatorem: zaakceptuj licencję, w razie możliwości wybierz folder instalacji i dokończ instalację.</li>
+      <li>Gdy system poprosi o podniesienie uprawnień, kliknij <strong>Tak</strong>, aby instalator mógł zapisać pliki m.in. w Program Files.</li>
+    </ol>
+
+    <h2>Po instalacji</h2>
+    <ol class="steps">
+      <li>Otwórz menu <strong>Start</strong>, wpisz <code>PuTTY</code> i uruchom program <strong>PuTTY</strong> (główny klient SSH).</li>
+      <li>Powiązane narzędzia (np. <strong>PuTTYgen</strong> do generowania kluczy) mają osobne skróty w tym samym folderze PuTTY w menu Start.</li>
+    </ol>
+
+    <div class="note">
+      <p><strong>Wersja przenośna:</strong> Na tej samej stronie pobierania możesz pobrać sam plik <code>putty.exe</code> i uruchamiać go bez instalacji. Instalator MSI jest zwykle wygodniejszy na co dzień, bo dodaje skróty w menu Start i opcjonalne powiązania protokołów.</p>
+    </div>
+
+    <h2>Połączenie z serwerem</h2>
+    <p>W oknie PuTTY w polu <strong>Host Name</strong> wpisz nazwę hosta lub adres IP serwera, w polu <strong>Port</strong> wpisz <code>22</code> (standardowy port SSH), jako typ połączenia (<strong>Connection type</strong>) wybierz <strong>SSH</strong>, następnie kliknij <strong>Open</strong>.</p>
+
+    <figure class="doc-figure">
+      <img src="../img/connect.png" width="448" height="440" alt="Okno konfiguracji PuTTY: pole Host Name, port 22, typ połączenia SSH i przycisk Open." loading="lazy" decoding="async">
+      <figcaption>Główne okno PuTTY — uzupełnij host, port i typ <strong>SSH</strong>, potem <strong>Open</strong>.</figcaption>
+    </figure>
+
+    <div class="after-figure">
+      <p>Po kliknięciu <strong>Open</strong> otwiera się osobne, zwykle ciemne okno konsoli (terminala).</p>
+      <p><strong>Krok 1 — użytkownik:</strong> wpisz <strong>nazwę użytkownika</strong> i naciśnij Enter. Często najpierw zobaczysz monit w stylu <code>login as:</code>.</p>
+      <p><strong>Krok 2 — hasło:</strong> wpisz <strong>hasło</strong> i znów naciśnij Enter.</p>
+      <div class="callout">
+        <p>Przy wpisywaniu hasła <strong>na ekranie nie widać żadnych znaków</strong> — ani liter, ani kropek, ani gwiazdek. To normalne przy SSH: wpisz całe hasło „w ciemno”, potem Enter.</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>Ten przewodnik opisuje standardowy oficjalny instalator. Numery wersji i dokładne nazwy plików zmieniają się z kolejnymi wydaniami PuTTY — zawsze wybieraj aktualny <strong>64-bitowy</strong> instalator Windows ze strony oficjalnej, chyba że potrzebujesz innej wersji.</p>
+    </footer>
+  </div>
+</body>
+</html>
