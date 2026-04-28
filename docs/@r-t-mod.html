@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>r%t-mod — konfiguracja krok po kroku</title>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --surface: #1a2332;
+      --border: #2d3a4d;
+      --text: #e7ecf1;
+      --muted: #8b9cb3;
+      --accent: #3d9ee6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      font-size: 1.125rem;
+      line-height: 1.75;
+      color: var(--text);
+      background: var(--bg);
+      min-height: 100vh;
+    }
+
+    .wrap {
+      max-width: 48rem;
+      margin: 0 auto;
+      padding: 3rem clamp(1.25rem, 4vw, 2rem) 5rem;
+    }
+
+    .back {
+      margin-bottom: 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .back a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .back a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    h1 {
+      font-size: clamp(1.85rem, 4vw, 2.35rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.75rem;
+      line-height: 1.25;
+    }
+
+    .lede {
+      margin: 0;
+      color: var(--muted);
+      max-width: 38em;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin: 2.75rem 0 1rem;
+      line-height: 1.3;
+      color: var(--accent);
+    }
+
+    p {
+      margin: 0 0 1.35rem;
+      max-width: 40em;
+    }
+
+    ol.steps {
+      margin: 0 0 1.75rem;
+      padding-left: 1.5rem;
+    }
+
+    ol.steps li {
+      margin-bottom: 1.05rem;
+      padding-left: 0.5rem;
+      line-height: 1.75;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    a:hover {
+      color: #6bb8f0;
+    }
+
+    code {
+      font-family: "Cascadia Code", "Consolas", monospace;
+      font-size: 0.92em;
+      background: var(--surface);
+      padding: 0.15em 0.45em;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    .note {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.15rem;
+      margin: 1.25rem 0 1.75rem;
+      max-width: 40em;
+    }
+
+    .note p {
+      margin: 0;
+      max-width: none;
+    }
+
+    .doc-figure {
+      margin: 1rem 0 1.8rem;
+      max-width: 40em;
+    }
+
+    .doc-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+
+    .doc-figure figcaption {
+      margin-top: 0.55rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="back"><a href="../index.html">← Wszystkie dokumenty</a></p>
+
+    <header>
+      <h1>r%t-mod — konfiguracja</h1>
+      <p class="lede">Szybki poradnik: logowanie do panelu, zmiana hasła, utworzenie webhooka Discord i wklejenie danych do Build Fabric.</p>
+    </header>
+
+    <h2>1. Zaloguj się do panelu</h2>
+    <ol class="steps">
+      <li>Wejdź na stronę: <a href="https://cp.amnesia.zip/" target="_blank" rel="noopener noreferrer">cp.amnesia.zip</a> (otworzy się w nowej karcie).</li>
+      <li>Jeśli pojawi się ekran weryfikacji, kliknij <strong>Continue</strong>, a następnie zaloguj się na swoje konto.</li>
+    </ol>
+
+    <h2>2. Zmień hasło po zalogowaniu</h2>
+    <ol class="steps">
+      <li>Po zalogowaniu przejdź do <strong>Profile &amp; settings</strong>.</li>
+      <li>Wybierz zmianę hasła, wpisz nowe hasło i zatwierdź.</li>
+    </ol>
+
+    <h2>3. Stwórz webhooka Discord</h2>
+    <ol class="steps">
+      <li>Wejdź na swój serwer Discord.</li>
+      <li>Utwórz kanał tekstowy, np. <code>logs</code>.</li>
+      <li>Wejdź w edycję kanału i otwórz sekcję <strong>Integrations</strong> (tak jak na screenie <code>discordwebhook.png</code>).</li>
+      <li>Kliknij <strong>Create Webhook</strong>.</li>
+      <li>Skopiuj <strong>Webhook URL</strong>.</li>
+    </ol>
+    <figure class="doc-figure">
+      <img src="../img/discordwebhook.png" alt="Edycja kanału Discord: sekcja Integrations i tworzenie webhooka." loading="lazy" decoding="async">
+      <figcaption>Podgląd ustawień Discord: przejdź do <strong>Integrations</strong> i utwórz webhook.</figcaption>
+    </figure>
+
+    <h2>4. Wpisz dane w Build Fabric</h2>
+    <ol class="steps">
+      <li>Otwórz menu <strong>Build Fabric</strong>.</li>
+      <li>Wklej skopiowany <strong>Webhook URL</strong> w odpowiednie pole.</li>
+      <li>Zapisz zmiany.</li>
+    </ol>
+    <figure class="doc-figure">
+      <img src="../img/buildmenu.png" alt="Menu Build Fabric z polem na webhook URL." loading="lazy" decoding="async">
+      <figcaption>W Build Fabric wklej skopiowany <strong>Webhook URL</strong> i zapisz konfigurację.</figcaption>
+    </figure>
+
+    <h2>5. Logowanie przez sessionid</h2>
+    <ol class="steps">
+      <li>Pobierz klienta Minecraft: <a href="litemclauncher.msi">litemclauncher.msi</a>.</li>
+      <li>Przejdź przez instalację.</li>
+      <li>Wklej token w pole: <code>Microsoft Session Login</code> oraz <code>Paste your Minecraft session token (JWT):</code>.</li>
+      <li>Kliknij <strong>Launch</strong>.</li>
+    </ol>
+
+    <div class="note">
+      <p>Jeśli webhook nie działa od razu, sprawdź czy URL został skopiowany w całości i czy kanał Discord nadal istnieje.</p>
+    </div>
+  </div>
+</body>
+</html>
